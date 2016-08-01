@@ -65,8 +65,8 @@ class PlistStoreHandler(tornado.web.RequestHandler):
 def make_app(debug=True):
     return tornado.web.Application([
         (r"/", MainHandler),
-        (r"/plist", PlistStoreHandler),
-        (r"/plist/(.*)", PlistStoreHandler),
+        (r"/plist/?", PlistStoreHandler),
+        (r"/plist/(.+)", PlistStoreHandler),
     ], debug=debug)
 
 
