@@ -50,14 +50,12 @@ class PlistStoreHandler(tornado.web.RequestHandler):
         self.write({'key': key, 'bundle_id': bundle_id})
 
     def get(self, key):
-        #key = self.get_argument('key')
         value = self.db.get(key)
         if value is None:
             raise tornado.web.HTTPError(404)
 
         # update records
         bundle_id = get_bundle_id_from_plist_string(value)
-        #view_count = self.bundle_ids[bundle_id]
         self.bundle_ids[bundle_id].append(self.request.remote_ip) # = view_count + 1
 
         self.set_header('Content-Type', 'text/xml')
