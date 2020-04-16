@@ -76,5 +76,5 @@ if __name__ == "__main__":
     app = make_app(debug=bool(os.getenv('DEBUG')))
     server = tornado.httpserver.HTTPServer(app, xheaders=True)
     server.listen(options.port)
-    print 'Listening on port %d' % options.port
+    print('Listening on port %d' % options.port)
     ioloop.IOLoop.current().start()
