@@ -18,6 +18,7 @@ from tornado.options import define, options
 define("port", default=int(os.environ.get('PORT', 8200)), help="Run server on a specific port", type=int) 
 
 def get_bundle_id_from_plist_string(s):
+    print(s)
     v = plistlib.loads(s)
     return v['items'][0]['metadata']['bundle-identifier']
 
